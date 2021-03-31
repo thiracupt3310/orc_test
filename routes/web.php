@@ -3,7 +3,7 @@
 use Alimranahmed\LaraOCR\Facades\OCR;
 use Alimranahmed\LaraOCR\Services\OcrAbstract;
 use Illuminate\Support\Facades\Route;
-
+use thiagoalessio\TesseractOCR\TesseractOCR;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +17,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    // echo (new TesseractOCR('./id/card1.jpg'))
+    //     ->run() . "<br><br>";
+    // echo (new TesseractOCR('./id/card2.jpg'))
+    //     ->run() . "<br><br>";
+    // echo (new TesseractOCR('./id/card3.jpg'))
+    //     ->run() . "<br><br>";
+    echo (new TesseractOCR('./id/card4.jpg'))
+        ->run() . "<br><br>";
+        
+    echo (new TesseractOCR('./id/card4.jpg'))
+        ->run() . "<br><br>";
+    echo (new TesseractOCR('./id/card4.jpg'))
+        ->run() . "<br><br>";
+    echo (new TesseractOCR('./id/card4.jpg'))
+        ->run() . "<br><br>";
+    echo (new TesseractOCR('./id/card4.jpg'))
+        ->run() . "<br><br>";
+    // echo (new TesseractOCR('./id/card5.jpg'))
+    //     ->run() . "<br><br>";
+    // echo (new TesseractOCR('./id/card6.jpg'))
+    //     ->run() . "<br><br>";
     // $imagePath = resource_path('1.jpg');
     // echo OCR::scan($imagePath);
-    
-    return view('lara_ocr.upload_image');
+
+    // return view('lara_ocr.upload_image');
 });
 
 Route::post('/', function () {
