@@ -2,6 +2,7 @@
 
 use Alimranahmed\LaraOCR\Facades\OCR;
 use Alimranahmed\LaraOCR\Services\OcrAbstract;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 
@@ -18,38 +19,39 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 
 Route::get('/', function () {
 
-    // echo (new TesseractOCR('./id/card1.jpg'))
+    // for ($i = 1; $i <= 6; $i++) {
+    // $mystring = (new TesseractOCR('./Pmew/card1.jpg'))->lang("tha")->run();
+    // $mystring1 = (new TesseractOCR('./Pmew/card2.jpg'))->lang("tha")->run();
+    // $mystring2 = (new TesseractOCR('./Pmew/card3.jpg'))->lang("tha")->run();
+    // $mystring3 = (new TesseractOCR('./Pmew/card4.jpg'))->lang("tha")->run();
+    // $mystring4 = (new TesseractOCR('./Pmew/card5.jpg'))->lang("tha")->run();
+    // $mystring5 = (new TesseractOCR('./Pmew/card6.jpg'))->lang("tha")->run();
+    // $mystring6 = (new TesseractOCR('./Pmew/card7.jpg'))->lang("tha")->run();
+
+    
+    // dd($mystring, $mystring1, $mystring2, $mystring3, $mystring4, $mystring5, $mystring6);
+
+
+
+    // $ocr = app()->make(OcrAbstract::class);
+    // // $parsedText = $ocr->scan(->getPathName());
+    // // $imagePath = resource_path('1.jpg');
+    // // echo OCR::scan($imagePath);
+    // echo "card5=======" . (new TesseractOCR('./id/cardScan.png'))
     //     ->run() . "<br><br>";
-    // echo (new TesseractOCR('./id/card2.jpg'))
-    //     ->run() . "<br><br>";
-    // echo (new TesseractOCR('./id/card3.jpg'))
-    //     ->run() . "<br><br>";
-    echo (new TesseractOCR('./id/card4.jpg'))
-        ->run() . "<br><br>";
-        
-    echo (new TesseractOCR('./id/card4.jpg'))
-        ->run() . "<br><br>";
-    echo (new TesseractOCR('./id/card4.jpg'))
-        ->run() . "<br><br>";
-    echo (new TesseractOCR('./id/card4.jpg'))
-        ->run() . "<br><br>";
-    echo (new TesseractOCR('./id/card4.jpg'))
-        ->run() . "<br><br>";
-    // echo (new TesseractOCR('./id/card5.jpg'))
-    //     ->run() . "<br><br>";
-    // echo (new TesseractOCR('./id/card6.jpg'))
-    //     ->run() . "<br><br>";
-    // $imagePath = resource_path('1.jpg');
-    // echo OCR::scan($imagePath);
 
     // return view('lara_ocr.upload_image');
 });
 
 Route::post('/', function () {
     $image = request('image');
+    // echo $image;
     if (isset($image) && $image->getPathName()) {
         $ocr = app()->make(OcrAbstract::class);
         $parsedText = $ocr->scan($image->getPathName());
-        return view('lara_ocr.parsed_text', compact('parsedText'));
+        // return view('lara_ocr.parsed_text', compact('parsedText'));
+
+
+        // echo "card5=======" . $parsedText . "<br><br>";
     }
 });
