@@ -2,6 +2,7 @@
 
 use Alimranahmed\LaraOCR\Facades\OCR;
 use Alimranahmed\LaraOCR\Services\OcrAbstract;
+use App\Http\Controllers\IdCardControllerr;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use thiagoalessio\TesseractOCR\TesseractOCR;
@@ -55,3 +56,6 @@ Route::post('/', function () {
         // echo "card5=======" . $parsedText . "<br><br>";
     }
 });
+
+
+Route::get('/idcard',[IdCardControllerr::class,'index']);
