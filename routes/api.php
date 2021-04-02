@@ -44,8 +44,8 @@ Route::get("card", function () {
                 $sum += intval($idNumber[$i]) * (strlen($idNumber) - $i);
             }
             $mod = $sum % 11;
-            $result = 11 - $mod;
-            if ($idNumber[12] === strval($result)) {
+            $sum = 11 - $mod;
+            if ($idNumber[12] === strval($sum)) {
                 // dd("yes");
                 $person["id"] = $idNumber;
                 $valid2 = true;
@@ -58,7 +58,7 @@ Route::get("card", function () {
             $valid3 = true;
         }
         // echo json_encode($person) . "<br>";
-        // $result[] = $person;  
+        $result[] = $person;  
         // dd($mystring);
     }
     return response()->json($result, 200);
