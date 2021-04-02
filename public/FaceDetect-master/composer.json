@@ -1,0 +1,5 @@
+{
+    "require": {
+        "robertogallea/laravel-python": "^0.1.1"
+    }
+}
