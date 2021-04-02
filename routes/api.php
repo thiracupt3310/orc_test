@@ -23,6 +23,7 @@ Route::get("card", function () {
     $array = [];
     $result = [];
     
+    
     for ($i = 1; $i <= 7; $i++) {
         $person = [];
         $mystring = (new TesseractOCR('./Pmew/card' . $i . '.jpg'))->run();
@@ -40,8 +41,8 @@ Route::get("card", function () {
         if (preg_match("/([0-9] [0-9]+ [0-9]+ [0-9]+ [0-9])\n+/", $mystring, $array)) {
             $idNumber = str_replace(' ', '', $array[1]);
             $sum = 0;
-            for ($i = 0; $i < strlen($idNumber) - 1; $i++) {
-                $sum += intval($idNumber[$i]) * (strlen($idNumber) - $i);
+            for ($j = 0; $j < strlen($idNumber) - 1; $j++) {
+                $sum += intval($idNumber[$j]) * (strlen($idNumber) - $j);
             }
             $mod = $sum % 11;
             $sum = 11 - $mod;
@@ -58,9 +59,10 @@ Route::get("card", function () {
             $valid3 = true;
         }
         // echo json_encode($person) . "<br>";
-        $result[] = $person;  
-        // dd($mystring);
+        $result[] = $person;
+        // echo "" . $i;  
     }
+    dd($result);
     return response()->json($result, 200);
 });
 Route::post("cardPost", function (Request $request) {
@@ -74,7 +76,7 @@ Route::post("cardPost", function (Request $request) {
     $valid2 = false;
     $valid3 = false;
 
-    if (preg_match("/Name Mr. ([a-zA-Z]+)(\n+)Lastname (.*)(\n+)/", $mystring, $array)) {
+    if (preg_match("/Name [Miss]*[Mr.]* ([a-zA-Z]+)(\n+)Lastname (.*)(\n+)/", $mystring, $array)) {
         $person["name"] = $array[1];
         $person["lastname"] = $array[3];
         $valid1 = true;
@@ -103,7 +105,5 @@ Route::post("cardPost", function (Request $request) {
     // echo json_encode($person) . "<br>";
     $result[] = $person;
     // }
-    return response()->json($result, 200)->withHeaders([
-        'status' => 'yes',
-    ]);;
+    return response()->json($result, 200);
 });

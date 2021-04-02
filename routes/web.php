@@ -67,12 +67,12 @@ Route::post('/parse2Text', function (Request $request) {
     $result = [];
 
     // for ($i = 1; $i <= 6; $i++) {
-    $mystring = (new TesseractOCR($request->file("image")))->run();
+    $mystring = (new TesseractOCR($request->image))->run();
     $valid1 = false;
     $valid2 = false;
     $valid3 = false;
 
-    if (preg_match("/Name Mr. ([a-zA-Z]+)(\n+)Lastname (.*)(\n+)/", $mystring, $array)) {
+    if (preg_match("/Name [Miss]*[Mr.]* ([a-zA-Z]+)(\n+)Lastname (.*)(\n+)/", $mystring, $array)) {
         $person["name"] = $array[1];
         $person["lastname"] = $array[3];
         $valid1 = true;
