@@ -66,13 +66,13 @@ for (x, y, w, h) in faces:
 
 if maxH != 0:
 
-    # cv2.imwrite(
-    #     "/var/www/html/orc_test/storage/app/public/base64/imageCard_crop.jpg", imageList[indexMax])
+    cv2.imwrite(
+        "/var/www/html/orc_test/storage/app/public/base64/imageCard_crop.jpg", imageList[indexMax])
     # im_arr: image in Numpy one-dim array format.
-    _, im_arr = cv2.imencode('.jpg', image)
-    im_bytes = im_arr.tobytes()
-    im_b64 = base64.b64encode(im_bytes)
-    print(im_b64)
+    # _, im_arr = cv2.imencode('.jpg', image)
+    # im_bytes = im_arr.tobytes()
+    # im_b64 = base64.b64encode(im_bytes)
+    # print(im_b64)
 
 
 # cv2.waitKey(0)
