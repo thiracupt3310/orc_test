@@ -4,6 +4,7 @@ use Alimranahmed\LaraOCR\Facades\OCR;
 use Alimranahmed\LaraOCR\Services\OcrAbstract;
 use App\Http\Controllers\IdCardControllerr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use thiagoalessio\TesseractOCR\TesseractOCR;
@@ -110,6 +111,8 @@ Route::post('/parse2Text', function (Request $request) {
     // fclose($myImage);
 
     $output = shell_exec('python3 /var/www/html/orc_test/faceDetect.py');
+
+    Log::info($output);
 
     // unlink("base64/base64.txt");
     
