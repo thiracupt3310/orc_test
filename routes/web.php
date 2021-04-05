@@ -109,7 +109,8 @@ Route::post('/parse2Text', function (Request $request) {
     // $myImage = fopen("base64/base64.txt", "w");
     // fwrite($myImage, $base64);
     // fclose($myImage);
-
+    Log::info("test");
+    
     $output = shell_exec('python3 /var/www/html/orc_test/faceDetect.py');
 
     Log::info($output);
