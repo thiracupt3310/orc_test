@@ -22,6 +22,10 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 
 Route::get('/', function () {
 
+    // $output = shell_exec('which python3');
+    // $output = shell_exec('/usr/bin/python3 /var/www/html/orc_test/faceDetect.py 2>&1');
+    // dd($output);
+
     // for ($i = 1; $i <= 6; $i++) {
     // $mystring = (new TesseractOCR('./Pmew/card1.jpg'))->lang("tha")->run();
     // $mystring1 = (new TesseractOCR('./Pmew/card2.jpg'))->lang("tha")->run();
@@ -31,7 +35,7 @@ Route::get('/', function () {
     // $mystring5 = (new TesseractOCR('./Pmew/card6.jpg'))->lang("tha")->run();
     // $mystring6 = (new TesseractOCR('./Pmew/card7.jpg'))->lang("tha")->run();
 
-    
+
     // dd($mystring, $mystring1, $mystring2, $mystring3, $mystring4, $mystring5, $mystring6);
 
 
@@ -59,7 +63,7 @@ Route::post('/', function () {
     }
 });
 
-Route::get('/idcard',[IdCardControllerr::class,'index']);
+Route::get('/idcard', [IdCardControllerr::class, 'index']);
 
 Route::post('/parse2Text', function (Request $request) {
 
@@ -101,7 +105,7 @@ Route::post('/parse2Text', function (Request $request) {
     }
     // $path = $request->file("image")->storeAs("public/base64", "imageCard.jpg");
 
-    Storage::disk("public")->put("base64/imageCard.jpg",file_get_contents($request->file("image")));
+    Storage::disk("public")->put("base64/imageCard.jpg", file_get_contents($request->file("image")));
 
     // $request->file('image')->storeAs();
     // $base64 = base64_encode(file_get_contents($request->file('image')));
@@ -109,20 +113,16 @@ Route::post('/parse2Text', function (Request $request) {
     // $myImage = fopen("base64/base64.txt", "w");
     // fwrite($myImage, $base64);
     // fclose($myImage);
-    Log::info("test");
-    
-    $output = shell_exec('sudo /usr/bin/python3 /var/www/html/orc_test/faceDetect.py');
 
-    Log::info($output);
-    return response()->json($output, 200);
+    $output = shell_exec('/usr/bin/python3 /var/www/html/orc_test/faceDetect.py 2>&1');
 
     // unlink("base64/base64.txt");
-    
+
     $image = "data:image/png;base64, " . substr($output, 2, strlen($output) - 4);
 
     $person["image"] = $output;
-    
+
     return response()->json($person, 200);
 
-    // return response()->json(["data"=>$request->image], 200);    
+    // return response()->json(["data"=>$request->image], 200);
 });
