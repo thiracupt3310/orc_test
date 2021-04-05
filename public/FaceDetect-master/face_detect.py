@@ -5,7 +5,7 @@ import sys
 import base64
 import numpy as np
 
-
+ 
 
 # Get user supplied values
 # imagePath = sys.argv[1]
@@ -71,7 +71,7 @@ if maxH != 0 :
     # _, im_arr = cv2.imencode('.jpg', image)  # im_arr: image in Numpy one-dim array format.
     # im_bytes = im_arr.tobytes()
     # im_b64 = base64.b64encode(im_bytes)
-    # print(im_b64)
+print("hello")
    
 
 # cv2.waitKey(0)
