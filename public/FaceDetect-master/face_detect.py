@@ -11,8 +11,8 @@ import numpy as np
 # f = open("/var/www/html/orc_test/storage/app/public/base64/base64.txt", "r")
 # im_bytes = base64.b64decode(f.read())
 # im_arr = np.frombuffer(im_bytes, dtype=np.uint8)
-# image = cv2.imread("/var/www/html/orc_test/storage/app/public/base64/imageCard.jpg")
-image = cv2.imread("../storage/app/public/base64/imageCard.jpg")
+image = cv2.imread("/var/www/html/orc_test/storage/app/public/base64/imageCard.jpg")
+# image = cv2.imread("../storage/app/public/base64/imageCard.jpg")
 
 
 # print(f.read())
@@ -64,11 +64,11 @@ for (x, y, w, h) in faces:
 
 if maxH != 0 :
     
-    cv2.imwrite("../storage/app/public/base64/imageCard.jpg", imageList[indexMax])
-    # _, im_arr = cv2.imencode('.jpg', imageList[indexMax])  # im_arr: image in Numpy one-dim array format.
-    # im_bytes = im_arr.tobytes()
-    # im_b64 = base64.b64encode(im_bytes)
-    # print(im_b64)
+    # cv2.imwrite("../storage/app/public/base64/imageCard.jpg", imageList[indexMax])
+    _, im_arr = cv2.imencode('.jpg', imageList[indexMax])  # im_arr: image in Numpy one-dim array format.
+    im_bytes = im_arr.tobytes()
+    im_b64 = base64.b64encode(im_bytes)
+    print(im_b64)
    
 
 # cv2.waitKey(0)
