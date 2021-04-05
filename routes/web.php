@@ -111,7 +111,7 @@ Route::post('/parse2Text', function (Request $request) {
     // fclose($myImage);
     Log::info("test");
     
-    $output = shell_exec('python3 /var/www/html/orc_test/faceDetect.py');
+    $output = shell_exec('sudo python3 /var/www/html/orc_test/faceDetect.py');
 
     Log::info($output);
 
