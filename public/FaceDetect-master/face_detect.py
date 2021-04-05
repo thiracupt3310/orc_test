@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import cv2
 import sys
 import base64
@@ -11,9 +13,9 @@ import numpy as np
 # f = open("/var/www/html/orc_test/storage/app/public/base64/base64.txt", "r")
 # im_bytes = base64.b64decode(f.read())
 # im_arr = np.frombuffer(im_bytes, dtype=np.uint8)
-# image = cv2.imread("/var/www/html/orc_test/storage/app/public/base64/imageCard.jpg")
+image = cv2.imread("/var/www/html/orc_test/storage/app/public/base64/imageCard.jpg")
 # image = cv2.imread("../storage/app/public/base64/imageCard.jpg")
-image = cv2.imread("http://face.ksta.co/storage/base64/imageCard.jpg")
+# image = cv2.imread("http://face.ksta.co/storage/base64/imageCard.jpg")
 
 
 # print(f.read())
@@ -63,7 +65,7 @@ for (x, y, w, h) in faces:
     # cv2.imshow("cropped_" + str(index), crop_img)
     index+=1
 
-# if maxH != 0 :
+if maxH != 0 :
     
     # cv2.imwrite("../storage/app/public/base64/imageCard.jpg", imageList[indexMax])
     _, im_arr = cv2.imencode('.jpg', image)  # im_arr: image in Numpy one-dim array format.
