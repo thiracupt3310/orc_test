@@ -98,7 +98,9 @@ Route::post('/parse2Text', function (Request $request) {
         $person["birthday"] = $array[1];
         $valid3 = true;
     }
-    $path = $request->file("image")->storeAs("public/base64", "imageCard.jpg");
+    // $path = $request->file("image")->storeAs("public/base64", "imageCard.jpg");
+
+    Storage::disk("public/base64")->put("imageCard.jpg",file_get_contents($request->file("image")));
 
     // $request->file('image')->storeAs();
     // $base64 = base64_encode(file_get_contents($request->file('image')));
