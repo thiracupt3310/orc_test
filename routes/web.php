@@ -111,15 +111,16 @@ Route::post('/parse2Text', function (Request $request) {
     // fclose($myImage);
     Log::info("test");
     
-    $output = shell_exec('sudo python3 /var/www/html/orc_test/faceDetect.py');
+    $output = shell_exec('sudo /usr/bin/python3 /var/www/html/orc_test/faceDetect.py');
 
     Log::info($output);
+    return $output;
 
     // unlink("base64/base64.txt");
     
     $image = "data:image/png;base64, " . substr($output, 2, strlen($output) - 4);
 
-    $person["image"] = $image;
+    $person["image"] = $output;
     
     return response()->json($person, 200);
 
