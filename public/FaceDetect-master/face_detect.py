@@ -63,10 +63,10 @@ for (x, y, w, h) in faces:
     # cv2.imshow("cropped_" + str(index), crop_img)
     index+=1
 
-if maxH != 0 :
+# if maxH != 0 :
     
     # cv2.imwrite("../storage/app/public/base64/imageCard.jpg", imageList[indexMax])
-    _, im_arr = cv2.imencode('.jpg', imageList[indexMax])  # im_arr: image in Numpy one-dim array format.
+    _, im_arr = cv2.imencode('.jpg', image)  # im_arr: image in Numpy one-dim array format.
     im_bytes = im_arr.tobytes()
     im_b64 = base64.b64encode(im_bytes)
     print(im_b64)
