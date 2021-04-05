@@ -98,17 +98,18 @@ Route::post('/parse2Text', function (Request $request) {
         $person["birthday"] = $array[1];
         $valid3 = true;
     }
-    // $path = $request->file("image")->storeAs("image", "imageCard.jpg");
+    $path = $request->file("image")->storeAs("image", "imageCard.jpg");
 
-    $base64 = base64_encode(file_get_contents($request->file('image')));
+    // $request->file('image')->storeAs();
+    // $base64 = base64_encode(file_get_contents($request->file('image')));
 
-    $myImage = fopen("base64/base64.txt", "w");
-    fwrite($myImage, $base64);
-    fclose($myImage);
+    // $myImage = fopen("base64/base64.txt", "w");
+    // fwrite($myImage, $base64);
+    // fclose($myImage);
 
     $output = shell_exec('python3 ./FaceDetect-master/face_detect.py');
 
-    unlink("base64/base64.txt");
+    // unlink("base64/base64.txt");
     
     $image = "data:image/png;base64, " . substr($output, 2, strlen($output) - 4);
 

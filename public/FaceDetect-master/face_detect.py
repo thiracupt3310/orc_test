@@ -8,10 +8,10 @@ import numpy as np
 # Get user supplied values
 # imagePath = sys.argv[1]
 
-f = open("./base64/base64.txt", "r")
-im_bytes = base64.b64decode(f.read())
-im_arr = np.frombuffer(im_bytes, dtype=np.uint8)
-image = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
+# f = open("/var/www/html/orc_test/storage/app/public/base64/base64.txt", "r")
+# im_bytes = base64.b64decode(f.read())
+# im_arr = np.frombuffer(im_bytes, dtype=np.uint8)
+image = cv2.imread("/var/www/html/orc_test/storage/app/public/base64/imageCard.jpg")
 
 # print(f.read())
 
