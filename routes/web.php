@@ -114,7 +114,7 @@ Route::post('/parse2Text', function (Request $request) {
     $output = shell_exec('sudo /usr/bin/python3 /var/www/html/orc_test/faceDetect.py');
 
     Log::info($output);
-    return $output;
+    return response()->json($output, 200);
 
     // unlink("base64/base64.txt");
     
