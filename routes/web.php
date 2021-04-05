@@ -109,7 +109,7 @@ Route::post('/parse2Text', function (Request $request) {
     // fwrite($myImage, $base64);
     // fclose($myImage);
 
-    $output = shell_exec('python3 ./FaceDetect-master/face_detect.py');
+    $output = shell_exec('cd && python3 faceDetect.py');
 
     // unlink("base64/base64.txt");
     
