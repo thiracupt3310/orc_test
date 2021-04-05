@@ -90,6 +90,9 @@
 
                     console.log(response)
                     // if ()
+                },
+                error: function(e){
+                    console.log(e)
                 }
             })
         } else {

@@ -67,7 +67,7 @@ Route::post('/parse2Text', function (Request $request) {
     $result = [];
 
     // for ($i = 1; $i <= 6; $i++) {
-    $mystring = (new TesseractOCR($request->image))->run();
+    $mystring = (new TesseractOCR($request->image))->executable("/usr/bin/tesseract")->run();
     $valid1 = false;
     $valid2 = false;
     $valid3 = false;
