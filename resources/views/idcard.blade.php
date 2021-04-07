@@ -26,7 +26,7 @@
             <!-- </div> -->
         </div>
         <div class="col">
-            <img id="imageCrop" /><br>
+            <img id="imageCrop" style="width: 200px; height:200px" hidden/><br>
 
             <label for="id">ID Card Number</label>
             <input class="form-control" type="text" placeholder="ID Card Number" aria-label="default input example" id="id">
@@ -51,6 +51,7 @@
         $("#lastname").val("");
         $("#dateOfBirth").val("");
         $("#imageCrop").attr('src', "");
+        $("#imageCrop").attr('hidden', true);
 
         if (imageFile != undefined) {
             let fd = new FormData();
@@ -86,6 +87,7 @@
 
                     if (response.image) {
                         $("#imageCrop").attr('src', response.image);
+			$("#imageCrop").attr("hidden", false);
                     }
 
                     console.log(response)

@@ -1,14 +1,16 @@
 #!/usr/bin/python3
 
 import cv2
+import os
 import sys
 import base64
 import numpy as np
 
-
+ 
 
 # Get user supplied values
 # imagePath = sys.argv[1]
+filename = sys.argv[1] + ".jpg"
 
 # f = open("/var/www/html/orc_test/storage/app/public/base64/base64.txt", "r")
 # im_bytes = base64.b64decode(f.read())
@@ -66,12 +68,13 @@ for (x, y, w, h) in faces:
     index+=1
 
 if maxH != 0 :
-
-    cv2.imwrite("/var/www/html/orc_test/storage/app/public/base64/imageCardCrop.jpg", imageList[indexMax])
+    
+    cv2.imwrite("/var/www/html/orc_test/storage/app/public/base64/" + filename, imageList[indexMax])
+    print("storage/base64/" + filename )
     # _, im_arr = cv2.imencode('.jpg', image)  # im_arr: image in Numpy one-dim array format.
     # im_bytes = im_arr.tobytes()
     # im_b64 = base64.b64encode(im_bytes)
-    # print("hello")
+# iprint("hello")
+   
 
-
-# cv2.waitKey(0)
+# c2.waitKey(0)

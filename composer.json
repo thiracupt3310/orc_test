@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "nesbot/carbon": "^2.46",
         "thiagoalessio/tesseract_ocr": "^2.11"
     },
     "require-dev": {

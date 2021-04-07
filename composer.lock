@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19285c898f06c5c4bb4980df39b21f26",
+    "content-hash": "1cbaa78bd42ead144daf8f8809d8e968",
     "packages": [
         {
             "name": "alimranahmed/laraocr",

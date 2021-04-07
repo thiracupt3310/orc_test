@@ -2,6 +2,7 @@
 
 use Alimranahmed\LaraOCR\Facades\OCR;
 use Alimranahmed\LaraOCR\Services\OcrAbstract;
+use Carbon\Carbon;
 use App\Http\Controllers\IdCardControllerr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,6 +23,9 @@ use thiagoalessio\TesseractOCR\TesseractOCR;
 
 Route::get('/', function () {
 
+    $output = shell_exec('/usr/bin/python3 /var/www/html/orc_test/public/FaceDetect-master/face_detect.py');
+    $now = Carbon::now()->timestamp;
+    dd(strval($now));
     // $output = shell_exec('which python3');
     // $output = shell_exec('/usr/bin/python3 /var/www/html/orc_test/faceDetect.py 2>&1');
     // dd($output);
@@ -113,12 +117,11 @@ Route::post('/parse2Text', function (Request $request) {
     // $myImage = fopen("base64/base64.txt", "w");
     // fwrite($myImage, $base64);
     // fclose($myImage);
-
-    $output = shell_exec('/usr/bin/python3 /var/www/html/orc_test/faceDetect.py 2>&1');
+    $filename = Carbon::now()->timestamp;
+    $output = shell_exec('/usr/bin/python3 /var/www/html/orc_test/public/FaceDetect-master/face_detect.py ' . strval($filename));
 
     // unlink("base64/base64.txt");
-
-    $image = "data:image/png;base64, " . substr($output, 2, strlen($output) - 4);
+    Storage::disk("public")->delete("base64/imageCard.jpg");
 
     $person["image"] = $output;
 
