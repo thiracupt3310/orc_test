@@ -180,6 +180,7 @@
         $("#id").val("");
         $("#firstname").val("");
         $("#lastname").val("");
+        $("#formFile").val("");
         $("#dateOfBirth").val("");
         $("#imageCrop").attr('src', "./icon/id_pic.svg");
         $('#profileImg').attr('src', "./icon/id-card.svg");
