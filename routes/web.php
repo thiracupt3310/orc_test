@@ -75,8 +75,11 @@ Route::post('/parse2Text', function (Request $request) {
     $person = [];
     $result = [];
 
+    Storage::disk("public")->put("base64/imageCard.jpg", file_get_contents($request->file("image")));
+
     // for ($i = 1; $i <= 6; $i++) {
-    $mystring = (new TesseractOCR($request->image))->executable("/usr/bin/tesseract")->run();
+    $mystring = (new TesseractOCR("/var/www/html/orc_test/storage/app/public/base64/imageCard.jpg"))->run();
+    // $mystring = "test";
     $valid1 = false;
     $valid2 = false;
     $valid3 = false;
@@ -103,13 +106,14 @@ Route::post('/parse2Text', function (Request $request) {
         }
     }
 
-    if (preg_match("/Date of Birth ([0-9]+ [a-zA-Z]+. [0-9]+)\n+/", $mystring, $array)) {
-        $person["birthday"] = $array[1];
+    if (preg_match("/Date of Birth ([0-9]+) ([a-zA-Z]+). ([0-9]+)\n+/", $mystring, $array)) {
+        $monthArray = array('Jan' => '01', 'Feb' => '02', 'Mar' => '03', 'Apr' => '04', 'May' => '05', 'Jun' => '06', 'Jul' => '07', 'Aug' => '08', 'Sep' => '09', 'Oct' => '10', 'Nov' => '11', 'Dec' => '12');
+        $birthDate = $array[1] . "/" . $monthArray[$array[2]]  . "/" . $array[3];
+        $person["birthday"] = $birthDate;
         $valid3 = true;
     }
     // $path = $request->file("image")->storeAs("public/base64", "imageCard.jpg");
 
-    Storage::disk("public")->put("base64/imageCard.jpg", file_get_contents($request->file("image")));
 
     // $request->file('image')->storeAs();
     // $base64 = base64_encode(file_get_contents($request->file('image')));
